@@ -13,9 +13,7 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:Scan  # Only allow required actions
-        - dynamodb:PutItem
-        - dynamodb:GetItem
+        - dynamodb:*
       Resource:
         - arn:aws:dynamodb:us-east-1:311141554419:table/studentsData  # Correct table name
 
