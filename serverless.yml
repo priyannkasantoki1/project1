@@ -1,6 +1,6 @@
 org: happyfine
 app: priyannka
-service: AWS-SERVERLESS-DEPLOYMENT
+service: project1
 frameworkVersion: '4'
 
 provider:
@@ -9,13 +9,19 @@ provider:
   stage: dev
   region: us-east-1
   environment:
-    STUDENT_DATA_TABLE: studentData
+    STUDENT_DATA_TABLE: studentsData
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:*
+        - dynamodb:Scan  # Only allow required actions
+        - dynamodb:PutItem
+        - dynamodb:GetItem
       Resource:
-        - arn:aws:dynamodb:us-east-2:311141554419:table/studentData
+        - arn:aws:dynamodb:us-east-1:311141554419:table/studentsData  # Correct table name
+
+  apiGateway:
+    restApiName: StudentAPI  # Explicit API Gateway definition
+    description: "API for student data"
 
 functions:
   ui:
@@ -47,7 +53,7 @@ resources:
     StudentDataTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: studentData
+        TableName: studentsData  # Ensure correct table name
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: studentid
