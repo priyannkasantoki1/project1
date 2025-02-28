@@ -3,7 +3,7 @@ import boto3
 
 # Initialize DynamoDB with the correct region
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-table = dynamodb.Table('studentData')
+table = dynamodb.Table('studentsData')
 
 def lambda_handler(event, context):
     try:
