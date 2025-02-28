@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var API_ENDPOINT = "https://q7wyat6pm6.execute-api.us-east-2.amazonaws.com/dev/students";
+    var API_ENDPOINT = "";
 
     document.getElementById("savestudent").onclick = function(){
         var inputData = {
