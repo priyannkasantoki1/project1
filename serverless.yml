@@ -1,0 +1,57 @@
+org: happyfine
+app: priyannka
+service: AWS-SERVERLESS-DEPLOYMENT
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: python3.9
+  stage: dev
+  region: us-east-2
+  environment:
+    STUDENT_DATA_TABLE: studentData
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-2:311141554419:table/studentData
+
+functions:
+  ui:
+    handler: ui.handler
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+
+  getStudents:
+    handler: getStudents.lambda_handler
+    events:
+      - http:
+          path: students
+          method: get
+          cors: true
+
+  insertStudentData:
+    handler: insertStudentData.lambda_handler
+    events:
+      - http:
+          path: students
+          method: post
+          cors: true
+
+resources:
+  Resources:
+    StudentDataTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: studentData
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: studentid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: studentid
+            KeyType: HASH
