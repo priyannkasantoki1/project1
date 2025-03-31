@@ -43,10 +43,12 @@ This project uses serverless architecture, meaning that there is no need to mana
 Since these services are serverless, there is no need to provision or manage servers, reducing complexity and costs, and allowing for automatic scaling based on the number of requests.
 
 ## 4. File Structure
-|-- getstudent.py # Lambda function to retrieve student data 
-|-- inserstudentsdata.py # Lambda function to insert student data 
-|-- index.html # Frontend UI for data input and display 
-|-- script.js # Handles API calls to AWS services
+
+- **`getstudent.py`**: This Lambda function is responsible for retrieving all student data from the DynamoDB database.
+- **`inserstudentsdata.py`**: This Lambda function handles the insertion of new student data into the DynamoDB database.
+- **`index.html`**: The HTML file that provides the user interface for adding and displaying student data.
+- **`script.js`**: A JavaScript file that makes AJAX calls to the API Gateway, triggering Lambda functions to insert or retrieve student data.
+
 
 
 ## 5. Setup and Deployment
