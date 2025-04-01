@@ -56,27 +56,34 @@ Since these services are serverless, there is no need to provision or manage ser
 ### Step 1: Create an S3 Bucket
 1. Upload `index.html` and `script.js` to Amazon S3.
 2. Enable static website hosting for the S3 bucket.
+ ![s3-bucket](https://github.com/priyannkasantoki1/project1/blob/main/severless-project-ami/serverless-project-imges2.jpg)
 
 ### Step 2: Create a DynamoDB Table
 1. **Table Name**: `studentData`
 2. **Primary Key**: `studentid` (String)
+ ![DynamoDB](https://github.com/priyannkasantoki1/project1/blob/main/severless-project-ami/serverless-project-imges5.jpg)
 
 ### Step 3: Create Lambda Functions
 1. Deploy `getstudent.py` and `inserstudentsdata.py` as AWS Lambda functions.
 2. Assign them appropriate IAM permissions to access DynamoDB.
-
+![Lamda](https://github.com/priyannkasantoki1/project1/blob/main/severless-project-ami/serverless-project-imges4.jpg)
 ### Step 4: Configure API Gateway
 1. Create an API with:
    - **POST /insertStudent** → Inserts Student Data.
    - **GET /getStudents** → Retrieves All Students.
 2. Link the API Gateway to the Lambda functions.
-
+ ![Lamda](https://github.com/priyannkasantoki1/project1/blob/main/severless-project-ami/serverless-project-imges1.jpg)
+ 
 ### Step 5: Update Frontend
 1. Replace `API_ENDPOIND_PASTE_HERE` in `script.js` with your API Gateway endpoint.
-
+![Lamda](https://github.com/priyannkasantoki1/project1/blob/main/severless-project-ami/serverless-project-images7.jpg)
 ### Step 6: Test the Application
 1. Open `index.html` in the browser.
 2. Add student data and retrieve it by clicking the appropriate button.
+
+ http://studentdata8.s3-website-us-east-1.amazonaws.com/project8/index.html
+ 
+ ![Lamda](https://github.com/priyannkasantoki1/project1/blob/main/severless-project-ami/serverless-project-images6.jpg)
 
 ## 6. API Endpoints
 
